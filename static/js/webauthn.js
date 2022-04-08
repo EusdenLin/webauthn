@@ -45,14 +45,18 @@ const didClickRegister = async (e) => {
     console.log(publicKeyCredentialCreateOptions);
     const credential = await navigator.credentials.create({
         publicKey: publicKeyCredentialCreateOptions
-    }); // what will happen if no transform ??
-    console.log(credential);
+    });
     
+    
+    //done
+    let newAssertionForServer;
     try {
-        const newAssertionForServer = transformNewAssertionForServer(credential);
+        newAssertionForServer = transformNewAssertionForServer(credential);
     } catch (err) {
         return console.error("Failed to transform assertion:", err);
     }
+    
+    console.log(newAssertionForServer);
 
     let assertionValidationResponse;
     try {
@@ -137,6 +141,9 @@ const transformNewAssertionForServer = (newAssertion) => {
     };
 }
 
+
+
+
 // for login
 
 const didClickLogin = async (e) => {
@@ -220,6 +227,7 @@ const transformAssertionForServer = (newAssertion) => {
     const clientDataJSON = new Uint8Array(newAssertion.response.clientDataJSON);
     const rawId = new Uint8Array(newAssertion.rawId);
     const sig = new Uint8Array(newAssertion.response.signature);
+    const userHandle = new Uint8Array(newAssertion.response.userHandle)
     const assertionClientExtensions = newAssertion.getClientExtensionResults();
 
     return {
@@ -229,6 +237,7 @@ const transformAssertionForServer = (newAssertion) => {
         authData: b64RawEnc(authData),
         clientData: b64RawEnc(clientDataJSON),
         signature: hexEncode(sig),
+        handle: hexEncode(userHandle),
         assertionClientExtensions: JSON.stringify(assertionClientExtensions)
     };
 };
