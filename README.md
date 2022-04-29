@@ -13,7 +13,7 @@
 * With event listener, the front-end would send form data(username) to server, the server would response with a json file with some credential create options.
 * credential create options: rely party, challenge, username, authenticatorSelection, ...
 
-### navigator.credentials.get
+### navigator.credentials.create
 * Create a client credential with the credential create options.
 
 Then the credential will be posted to the server, and verified the credential using challenge to check whether the credential is valid or not.
@@ -25,3 +25,7 @@ If valid, the server will store a dict ```{username, (publickey, credentialID)}`
 ### didClickRegister(for registration):
 * With event listener, the front-end would send form data(username) to server, the server would response with a json file with some authentication options.
 * authentication options: challenge, allow_credentials, ...
+
+### navigator.credentials.get
+* gain the credential while register
+* The credential assertion will be posted to server for authentication. If the assertion is valid, then the user is allowed to login.
