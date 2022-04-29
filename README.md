@@ -9,11 +9,11 @@
 
 ## Authentication Flow - Registration
 
-### didClickRegister(for registration):
+#### didClickRegister(for registration):
 * With event listener, the front-end would send form data(username) to server, the server would response with a json file with some credential create options.
 * credential create options: rely party, challenge, username, authenticatorSelection, ...
 
-### navigator.credentials.create
+#### navigator.credentials.create
 * Create a client credential with the credential create options.
 
 Then the credential will be posted to the server, and verified the credential using challenge to check whether the credential is valid or not.
@@ -22,10 +22,25 @@ If valid, the server will store a dict ```{username, (publickey, credentialID)}`
 
 ## Authentication Flow - Authentication
 
-### didClickRegister(for registration):
+#### didClickRegister(for registration):
 * With event listener, the front-end would send form data(username) to server, the server would response with a json file with some authentication options.
 * authentication options: challenge, allow_credentials, ...
 
-### navigator.credentials.get
+#### navigator.credentials.get
 * gain the credential while register
 * The credential assertion will be posted to server for authentication. If the assertion is valid, then the user is allowed to login.
+
+
+## Usage
+```
+flask run
+```
+Open ```127.0.0.1:5000``` on your browser. (localhost:5000 is not allowed due to invalid domain)
+
+Then you can use the simple authentication tool.
+
+## References
+https://blog.techbridge.cc/2019/08/17/webauthn-intro/
+https://github.com/duo-labs/py_webauthn/
+https://www.w3.org/TR/webauthn-2/
+https://webauthn.io/
