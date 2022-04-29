@@ -41,7 +41,6 @@ DISPLAY_NAME_MAX_LENGTH = 65
 RP_ID = 'localhost'
 RP_NAME = 'webauthn demo localhost'
 ORIGIN = 'http://localhost:5000'
-TRUST_ANCHOR_DIR = 'trusted_attestation_roots'
 previous_username = queue.Queue()
 user = dict()
 
