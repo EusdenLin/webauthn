@@ -28,6 +28,7 @@ async function fetch_json(url, options) {
 }
 
 
+
 // for registration
 
 const didClickRegister = async (e) => {
@@ -229,17 +230,21 @@ const transformAssertionForServer = (newAssertion) => {
     const sig = new Uint8Array(newAssertion.response.signature);
     const userHandle = new Uint8Array(newAssertion.response.userHandle)
     const assertionClientExtensions = newAssertion.getClientExtensionResults();
-
+    console.log(b64RawEnc(sig))
     return {
         id: newAssertion.id,
         rawId: b64enc(rawId),
         type: newAssertion.type,
         authData: b64RawEnc(authData),
         clientData: b64RawEnc(clientDataJSON),
-        signature: hexEncode(sig),
+        signature: b64RawEnc(sig),
         handle: hexEncode(userHandle),
         assertionClientExtensions: JSON.stringify(assertionClientExtensions)
     };
+
+    // b64enc: MEYCIQDc2F-f9nAkEzdKmoD_Iql_F6CgDkhJt8bn0iVxpal0HAIhAJUkpIVU8t8fyMgzRJhh6H4UUYzBz6oevIk7b_YhhnpA
+    // b64RawEnc: MEQCIAO0DPc0IN8zNl5aWDiPAkuc1RSxzxzTlKNAfHCuNzB6AiBvwmbinIdPftjfEuBykJXSsCICKtBi9UPr_h3QrrcyiQ==
+    // example: iOHKX3erU5_OYP_r_9HLZ-CexCE4bQRrxM8WmuoKTDdhAnZSeTP0sjECjvjfeS8MJzN1ArmvV0H0C3yy_FdRFfcpUPZzdZ7bBcmPh1XPdxRwY747OrIzcTLTFQUPdn1U-izCZtP_78VGw9pCpdMsv4CUzZdJbEcRtQuRS03qUjqDaovoJhOqEBmxJn9Wu8tBi_Qx7A33RbYjlfyLm_EDqimzDZhyietyop6XUcpKarKqVH0M6mMrM5zTjp8xf3W7odFCadXEJg-ERZqFM0-9Uup6kJNLbr6C5J4NDYmSm3HCSA6lp2iEiMPKU8Ii7QZ61kybXLxsX4w4Dm3fOLjmDw
 };
 
 const postAssertionToServer = async (assertionDataForServer) => {
