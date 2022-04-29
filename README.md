@@ -40,7 +40,7 @@ Open ```127.0.0.1:5000``` on your browser. (localhost:5000 is not allowed due to
 Then you can use the simple authentication tool.
 
 ## References
-https://blog.techbridge.cc/2019/08/17/webauthn-intro/
-https://github.com/duo-labs/py_webauthn/
-https://www.w3.org/TR/webauthn-2/
-https://webauthn.io/
+* https://blog.techbridge.cc/2019/08/17/webauthn-intro/
+* https://github.com/duo-labs/py_webauthn/
+* https://www.w3.org/TR/webauthn-2/
+* https://webauthn.io/
