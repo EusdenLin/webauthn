@@ -188,7 +188,7 @@ const didClickLogin = async (e) => {
     } catch (err) {
         return console.error("Error when validating assertion on server:", err);
     }
-
+    window.alert('Success Authentication.')
     window.location.reload();
 };
 
