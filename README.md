@@ -24,7 +24,7 @@ If valid, the server will store a dict ```{username, (publickey, credentialID)}`
 
 ## Authentication Flow - Authentication
 
-#### didClickRegister(for registration):
+#### didClickLogin(for Authentication):
 * With event listener, the front-end would send form data(username) to server, the server would response with a json file with some authentication options.
 * authentication options: challenge, allow_credentials, ...
 
