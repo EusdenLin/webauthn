@@ -40,7 +40,7 @@ DISPLAY_NAME_MAX_LENGTH = 65
 
 RP_ID = 'localhost'
 RP_NAME = 'webauthn demo localhost'
-ORIGIN = 'http://localhost:5000'
+ORIGIN = 'http://localhost:8080'
 previous_username = queue.Queue()
 user = dict()
 
@@ -100,7 +100,7 @@ def verifyCredential():
         webauthn_credential = verify_registration_response(
                             credential=RegistrationCredential.parse_raw(json.dumps(formData)),
                             expected_challenge=b"1234567890",
-                            expected_origin="http://localhost:5000",
+                            expected_origin="http://localhost:8080",
                             expected_rp_id="localhost",
                             require_user_verification=True,    
                         )
